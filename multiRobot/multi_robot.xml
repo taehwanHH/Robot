@@ -1,0 +1,620 @@
+<mujoco model="custom_environment">
+    <compiler angle="radian" meshdir="assets"/>
+    <option cone="elliptic" impratio="10" iterations="50" tolerance="1e-6" solver="Newton"/>
+    <asset>
+        <!-- 추가적인 자산 (예: 메쉬 파일, 텍스처 등)을 여기 추가할 수 있습니다 -->
+    </asset>
+
+    <default>
+        <default class="robot_geom">
+            <geom type="cylinder" size="0.05 0.2" pos="0 0 0.2" rgba="0 0 0 1" contype="1" conaffinity="1"/>
+        </default>
+        <default class="guide_geom">
+            <geom type="cylinder" size="0.025 0.45" pos="0 0 0.4"/>
+        </default>
+        <default class="vertical_joint">
+            <joint type="slide" axis="0 0 1" pos="0 0 0" range="0 3" armature="0.005" stiffness="1000" damping="10000"/>
+        </default>
+        <default class="sensor_geom">
+            <geom type="sphere" size="0.01" pos="0 0 0" rgba="1 0 0 0" contype="1" conaffinity="1"/>
+        </default>
+
+    </default>
+
+    <worldbody>
+        <!-- 로봇 1 -->
+        <body name="robot1" pos="-0.3 0.3 0.0" quat="-0.3827 0 0 0.9239">
+            <body name="robot1_link1" pos="0 0 0">
+                <joint name="robot1_vertical_joint" class="vertical_joint" damping="100000"/>
+                <geom name="robot1_link1_geom" class="robot_geom"/>
+                <body name="robot1_link2" pos="0 0 0.4">
+                    <joint name="robot1_vertical_joint2" class="vertical_joint"/>
+                    <geom name="robot1_link2_geom" class="robot_geom" />
+                    <body name="robot1_link3" pos="0 0 0.4">
+                        <joint name="robot1_vertical_joint3" class="vertical_joint"/>
+                        <geom name="robot1_link3_geom" class="robot_geom" />
+                        <body name="robot1_end_effector" pos="0 0 0.4">
+                            <geom name="robot1_ee_geom" type="sphere" size="0.05" pos="0 0 0"/>
+                            <!--touch_sensor-->
+                            <!-- layer 1 -->
+                            <geom name="robot1_touch_geom_1" type="sphere" size="0.005" pos="0.000000 0.050000 0.000000" rgba="1 0 0 0.5"/>
+                            <site name="robot1_sensor_1" pos="0.000000 0.050000 0.000000" size="0.005" rgba="1 0 0 1"/>
+                            <!-- 레이어 2 -->
+                            <!-- 센서 2 -->
+                            <geom name="robot1_touch_geom_2" type="sphere" size="0.005" pos="0.02236 0.00000 0.04500" rgba="1 0 0 0.5"/>
+                            <site name="robot1_sensor_2" pos="0.02236 0.00000 0.04500" size="0.005" rgba="1 0 0 1"/>
+                            <!-- 센서 3 -->
+                            <geom name="robot1_touch_geom_3" type="sphere" size="0.005" pos="0.01118 0.01936 0.04500" rgba="1 0 0 0.5"/>
+                            <site name="robot1_sensor_3" pos="0.01118 0.01936 0.04500" size="0.005" rgba="1 0 0 1"/>
+                            <!-- 센서 4 -->
+                            <geom name="robot1_touch_geom_4" type="sphere" size="0.005" pos="-0.01118 0.01936 0.04500" rgba="1 0 0 0.5"/>
+                            <site name="robot1_sensor_4" pos="-0.01118 0.01936 0.04500" size="0.005" rgba="1 0 0 1"/>
+                            <!-- 센서 5 -->
+                            <geom name="robot1_touch_geom_5" type="sphere" size="0.005" pos="-0.02236 0.00000 0.04500" rgba="1 0 0 0.5"/>
+                            <site name="robot1_sensor_5" pos="-0.02236 0.00000 0.04500" size="0.005" rgba="1 0 0 1"/>
+                            <!-- 센서 6 -->
+                            <geom name="robot1_touch_geom_6" type="sphere" size="0.005" pos="-0.01118 -0.01936 0.04500" rgba="1 0 0 0.5"/>
+                            <site name="robot1_sensor_6" pos="-0.01118 -0.01936 0.04500" size="0.005" rgba="1 0 0 1"/>
+                            <!-- 센서 7 -->
+                            <geom name="robot1_touch_geom_7" type="sphere" size="0.005" pos="0.01118 -0.01936 0.04500" rgba="1 0 0 0.5"/>
+                            <site name="robot1_sensor_7" pos="0.01118 -0.01936 0.04500" size="0.005" rgba="1 0 0 1"/>
+
+                            <!-- 레이어 3 -->
+                            <!-- 센서 8 -->
+                            <geom name="robot1_touch_geom_8" type="sphere" size="0.005" pos="0.03000 0.00000 0.04000" rgba="1 0 0 0.5"/>
+                            <site name="robot1_sensor_8" pos="0.03000 0.00000 0.04000" size="0.005" rgba="1 0 0 1"/>
+                            <!-- 센서 9 -->
+                            <geom name="robot1_touch_geom_9" type="sphere" size="0.005" pos="0.02121 0.02121 0.04000" rgba="1 0 0 0.5"/>
+                            <site name="robot1_sensor_9" pos="0.02121 0.02121 0.04000" size="0.005" rgba="1 0 0 1"/>
+                            <!-- 센서 10 -->
+                            <geom name="robot1_touch_geom_10" type="sphere" size="0.005" pos="0.00000 0.03000 0.04000" rgba="1 0 0 0.5"/>
+                            <site name="robot1_sensor_10" pos="0.00000 0.03000 0.04000" size="0.005" rgba="1 0 0 1"/>
+                            <!-- 센서 11 -->
+                            <geom name="robot1_touch_geom_11" type="sphere" size="0.005" pos="-0.02121 0.02121 0.04000" rgba="1 0 0 0.5"/>
+                            <site name="robot1_sensor_11" pos="-0.02121 0.02121 0.04000" size="0.005" rgba="1 0 0 1"/>
+                            <!-- 센서 12 -->
+                            <geom name="robot1_touch_geom_12" type="sphere" size="0.005" pos="-0.03000 0.00000 0.04000" rgba="1 0 0 0.5"/>
+                            <site name="robot1_sensor_12" pos="-0.03000 0.00000 0.04000" size="0.005" rgba="1 0 0 1"/>
+                            <!-- 센서 13 -->
+                            <geom name="robot1_touch_geom_13" type="sphere" size="0.005" pos="-0.02121 -0.02121 0.04000" rgba="1 0 0 0.5"/>
+                            <site name="robot1_sensor_13" pos="-0.02121 -0.02121 0.04000" size="0.005" rgba="1 0 0 1"/>
+                            <!-- 센서 14 -->
+                            <geom name="robot1_touch_geom_14" type="sphere" size="0.005" pos="0.00000 -0.03000 0.04000" rgba="1 0 0 0.5"/>
+                            <site name="robot1_sensor_14" pos="0.00000 -0.03000 0.04000" size="0.005" rgba="1 0 0 1"/>
+                            <!-- 센서 15 -->
+                            <geom name="robot1_touch_geom_15" type="sphere" size="0.005" pos="0.02121 -0.02121 0.04000" rgba="1 0 0 0.5"/>
+                            <site name="robot1_sensor_15" pos="0.02121 -0.02121 0.04000" size="0.005" rgba="1 0 0 1"/>
+
+                            <!-- 레이어 4 -->
+                            <!-- 센서 16 -->
+                            <geom name="robot1_touch_geom_16" type="sphere" size="0.005" pos="0.03536 0.00000 0.03500" rgba="1 0 0 0.5"/>
+                            <site name="robot1_sensor_16" pos="0.03536 0.00000 0.03500" size="0.005" rgba="1 0 0 1"/>
+                            <!-- 센서 17 -->
+                            <geom name="robot1_touch_geom_17" type="sphere" size="0.005" pos="0.01092 0.03343 0.03500" rgba="1 0 0 0.5"/>
+                            <site name="robot1_sensor_17" pos="0.01092 0.03343 0.03500" size="0.005" rgba="1 0 0 1"/>
+                            <!-- 센서 18 -->
+                            <geom name="robot1_touch_geom_18" type="sphere" size="0.005" pos="-0.02863 0.02065 0.03500" rgba="1 0 0 0.5"/>
+                            <site name="robot1_sensor_18" pos="-0.02863 0.02065 0.03500" size="0.005" rgba="1 0 0 1"/>
+                            <!-- 센서 19 -->
+                            <geom name="robot1_touch_geom_19" type="sphere" size="0.005" pos="-0.02863 -0.02065 0.03500" rgba="1 0 0 0.5"/>
+                            <site name="robot1_sensor_19" pos="-0.02863 -0.02065 0.03500" size="0.005" rgba="1 0 0 1"/>
+                            <!-- 센서 20 -->
+                            <geom name="robot1_touch_geom_20" type="sphere" size="0.005" pos="0.01092 -0.03343 0.03500" rgba="1 0 0 0.5"/>
+                            <site name="robot1_sensor_20" pos="0.01092 -0.03343 0.03500" size="0.005" rgba="1 0 0 1"/>
+
+
+                            <!-- 레이어 5 -->
+                            <!-- 센서 21 -->
+                            <geom name="robot1_touch_geom_21" type="sphere" size="0.005" pos="0.04082 0.00000 0.03000" rgba="1 0 0 0.5"/>
+                            <site name="robot1_sensor_21" pos="0.04082 0.00000 0.03000" size="0.005" rgba="1 0 0 1"/>
+                            <!-- 센서 22 -->
+                            <geom name="robot1_touch_geom_22" type="sphere" size="0.005" pos="-0.02041 0.03534 0.03000" rgba="1 0 0 0.5"/>
+                            <site name="robot1_sensor_22" pos="-0.02041 0.03534 0.03000" size="0.005" rgba="1 0 0 1"/>
+                            <!-- 센서 23 -->
+                            <geom name="robot1_touch_geom_23" type="sphere" size="0.005" pos="-0.02041 -0.03534 0.03000" rgba="1 0 0 0.5"/>
+                            <site name="robot1_sensor_23" pos="-0.02041 -0.03534 0.03000" size="0.005" rgba="1 0 0 1"/>
+
+                            <!-- 레이어 6 -->
+                            <!-- 센서 24 -->
+                            <geom name="robot1_touch_geom_24" type="sphere" size="0.005" pos="0.04330 0.00000 0.02500" rgba="1 0 0 0.5"/>
+                            <site name="robot1_sensor_24" pos="0.04330 0.00000 0.02500" size="0.005" rgba="1 0 0 1"/>
+                            <!-- 센서 25 -->
+                            <geom name="robot1_touch_geom_25" type="sphere" size="0.005" pos="-0.04330 0.00000 0.02500" rgba="1 0 0 0.5"/>
+                            <site name="robot1_sensor_25" pos="-0.04330 0.00000 0.02500" size="0.005" rgba="1 0 0 1"/>
+                        </body>
+                    </body>
+                    <body name="robot1_guide2" pos="0 0 0">
+                        <geom name="robot1_guide2_geom" class="guide_geom"/>
+                    </body>
+                </body>
+                <body name="robot1_guide" pos="0 0 0">
+                    <geom name="robot1_guide_geom" class="guide_geom"/>
+                </body>
+            </body>
+        </body>
+                <!-- 로봇 2 -->
+        <body name="robot2" pos="-0.3 -0.4 0.0" quat="-0.9239 0 0 0.3827">
+            <body name="robot2_link1" pos="0 0 0">
+                <joint name="robot2_vertical_joint" class="vertical_joint" damping="100000"/>
+                <geom name="robot2_link1_geom" class="robot_geom"/>
+                <body name="robot2_link2" pos="0 0 0.4">
+                    <joint name="robot2_vertical_joint2" class="vertical_joint"/>
+                    <geom name="robot2_link2_geom" class="robot_geom"  />
+                    <body name="robot2_link3" pos="0 0 0.4">
+                        <joint name="robot2_vertical_joint3" class="vertical_joint"/>
+                        <geom name="robot2_link3_geom" class="robot_geom" />
+                        <body name="robot2_end_effector" pos="0 0 0.4">
+                            <geom name="robot2_ee_geom" type="sphere" size="0.05" pos="0 0 0"/>
+                            <!--touch_sensor-->
+                            <!-- layer 1 -->
+                            <geom name="robot2_touch_geom_1" type="sphere" size="0.005" pos="0.000000 0.050000 0.000000" rgba="1 0 0 0.5"/>
+                            <site name="robot2_sensor_1" pos="0.000000 0.050000 0.000000" size="0.005" rgba="1 0 0 1"/>
+                            <!-- 레이어 2 -->
+                            <!-- 센서 2 -->
+                            <geom name="robot2_touch_geom_2" type="sphere" size="0.005" pos="0.02236 0.00000 0.04500" rgba="1 0 0 0.5"/>
+                            <site name="robot2_sensor_2" pos="0.02236 0.00000 0.04500" size="0.005" rgba="1 0 0 1"/>
+                            <!-- 센서 3 -->
+                            <geom name="robot2_touch_geom_3" type="sphere" size="0.005" pos="0.01118 0.01936 0.04500" rgba="1 0 0 0.5"/>
+                            <site name="robot2_sensor_3" pos="0.01118 0.01936 0.04500" size="0.005" rgba="1 0 0 1"/>
+                            <!-- 센서 4 -->
+                            <geom name="robot2_touch_geom_4" type="sphere" size="0.005" pos="-0.01118 0.01936 0.04500" rgba="1 0 0 0.5"/>
+                            <site name="robot2_sensor_4" pos="-0.01118 0.01936 0.04500" size="0.005" rgba="1 0 0 1"/>
+                            <!-- 센서 5 -->
+                            <geom name="robot2_touch_geom_5" type="sphere" size="0.005" pos="-0.02236 0.00000 0.04500" rgba="1 0 0 0.5"/>
+                            <site name="robot2_sensor_5" pos="-0.02236 0.00000 0.04500" size="0.005" rgba="1 0 0 1"/>
+                            <!-- 센서 6 -->
+                            <geom name="robot2_touch_geom_6" type="sphere" size="0.005" pos="-0.01118 -0.01936 0.04500" rgba="1 0 0 0.5"/>
+                            <site name="robot2_sensor_6" pos="-0.01118 -0.01936 0.04500" size="0.005" rgba="1 0 0 1"/>
+                            <!-- 센서 7 -->
+                            <geom name="robot2_touch_geom_7" type="sphere" size="0.005" pos="0.01118 -0.01936 0.04500" rgba="1 0 0 0.5"/>
+                            <site name="robot2_sensor_7" pos="0.01118 -0.01936 0.04500" size="0.005" rgba="1 0 0 1"/>
+
+                            <!-- 레이어 3 -->
+                            <!-- 센서 8 -->
+                            <geom name="robot2_touch_geom_8" type="sphere" size="0.005" pos="0.03000 0.00000 0.04000" rgba="1 0 0 0.5"/>
+                            <site name="robot2_sensor_8" pos="0.03000 0.00000 0.04000" size="0.005" rgba="1 0 0 1"/>
+                            <!-- 센서 9 -->
+                            <geom name="robot2_touch_geom_9" type="sphere" size="0.005" pos="0.02121 0.02121 0.04000" rgba="1 0 0 0.5"/>
+                            <site name="robot2_sensor_9" pos="0.02121 0.02121 0.04000" size="0.005" rgba="1 0 0 1"/>
+                            <!-- 센서 10 -->
+                            <geom name="robot2_touch_geom_10" type="sphere" size="0.005" pos="0.00000 0.03000 0.04000" rgba="1 0 0 0.5"/>
+                            <site name="robot2_sensor_10" pos="0.00000 0.03000 0.04000" size="0.005" rgba="1 0 0 1"/>
+                            <!-- 센서 11 -->
+                            <geom name="robot2_touch_geom_11" type="sphere" size="0.005" pos="-0.02121 0.02121 0.04000" rgba="1 0 0 0.5"/>
+                            <site name="robot2_sensor_11" pos="-0.02121 0.02121 0.04000" size="0.005" rgba="1 0 0 1"/>
+                            <!-- 센서 12 -->
+                            <geom name="robot2_touch_geom_12" type="sphere" size="0.005" pos="-0.03000 0.00000 0.04000" rgba="1 0 0 0.5"/>
+                            <site name="robot2_sensor_12" pos="-0.03000 0.00000 0.04000" size="0.005" rgba="1 0 0 1"/>
+                            <!-- 센서 13 -->
+                            <geom name="robot2_touch_geom_13" type="sphere" size="0.005" pos="-0.02121 -0.02121 0.04000" rgba="1 0 0 0.5"/>
+                            <site name="robot2_sensor_13" pos="-0.02121 -0.02121 0.04000" size="0.005" rgba="1 0 0 1"/>
+                            <!-- 센서 14 -->
+                            <geom name="robot2_touch_geom_14" type="sphere" size="0.005" pos="0.00000 -0.03000 0.04000" rgba="1 0 0 0.5"/>
+                            <site name="robot2_sensor_14" pos="0.00000 -0.03000 0.04000" size="0.005" rgba="1 0 0 1"/>
+                            <!-- 센서 15 -->
+                            <geom name="robot2_touch_geom_15" type="sphere" size="0.005" pos="0.02121 -0.02121 0.04000" rgba="1 0 0 0.5"/>
+                            <site name="robot2_sensor_15" pos="0.02121 -0.02121 0.04000" size="0.005" rgba="1 0 0 1"/>
+
+                            <!-- 레이어 4 -->
+                            <!-- 센서 16 -->
+                            <geom name="robot2_touch_geom_16" type="sphere" size="0.005" pos="0.03536 0.00000 0.03500" rgba="1 0 0 0.5"/>
+                            <site name="robot2_sensor_16" pos="0.03536 0.00000 0.03500" size="0.005" rgba="1 0 0 1"/>
+                            <!-- 센서 17 -->
+                            <geom name="robot2_touch_geom_17" type="sphere" size="0.005" pos="0.01092 0.03343 0.03500" rgba="1 0 0 0.5"/>
+                            <site name="robot2_sensor_17" pos="0.01092 0.03343 0.03500" size="0.005" rgba="1 0 0 1"/>
+                            <!-- 센서 18 -->
+                            <geom name="robot2_touch_geom_18" type="sphere" size="0.005" pos="-0.02863 0.02065 0.03500" rgba="1 0 0 0.5"/>
+                            <site name="robot2_sensor_18" pos="-0.02863 0.02065 0.03500" size="0.005" rgba="1 0 0 1"/>
+                            <!-- 센서 19 -->
+                            <geom name="robot2_touch_geom_19" type="sphere" size="0.005" pos="-0.02863 -0.02065 0.03500" rgba="1 0 0 0.5"/>
+                            <site name="robot2_sensor_19" pos="-0.02863 -0.02065 0.03500" size="0.005" rgba="1 0 0 1"/>
+                            <!-- 센서 20 -->
+                            <geom name="robot2_touch_geom_20" type="sphere" size="0.005" pos="0.01092 -0.03343 0.03500" rgba="1 0 0 0.5"/>
+                            <site name="robot2_sensor_20" pos="0.01092 -0.03343 0.03500" size="0.005" rgba="1 0 0 1"/>
+
+
+                            <!-- 레이어 5 -->
+                            <!-- 센서 21 -->
+                            <geom name="robot2_touch_geom_21" type="sphere" size="0.005" pos="0.04082 0.00000 0.03000" rgba="1 0 0 0.5"/>
+                            <site name="robot2_sensor_21" pos="0.04082 0.00000 0.03000" size="0.005" rgba="1 0 0 1"/>
+                            <!-- 센서 22 -->
+                            <geom name="robot2_touch_geom_22" type="sphere" size="0.005" pos="-0.02041 0.03534 0.03000" rgba="1 0 0 0.5"/>
+                            <site name="robot2_sensor_22" pos="-0.02041 0.03534 0.03000" size="0.005" rgba="1 0 0 1"/>
+                            <!-- 센서 23 -->
+                            <geom name="robot2_touch_geom_23" type="sphere" size="0.005" pos="-0.02041 -0.03534 0.03000" rgba="1 0 0 0.5"/>
+                            <site name="robot2_sensor_23" pos="-0.02041 -0.03534 0.03000" size="0.005" rgba="1 0 0 1"/>
+
+                            <!-- 레이어 6 -->
+                            <!-- 센서 24 -->
+                            <geom name="robot2_touch_geom_24" type="sphere" size="0.005" pos="0.04330 0.00000 0.02500" rgba="1 0 0 0.5"/>
+                            <site name="robot2_sensor_24" pos="0.04330 0.00000 0.02500" size="0.005" rgba="1 0 0 1"/>
+                            <!-- 센서 25 -->
+                            <geom name="robot2_touch_geom_25" type="sphere" size="0.005" pos="-0.04330 0.00000 0.02500" rgba="1 0 0 0.5"/>
+                            <site name="robot2_sensor_25" pos="-0.04330 0.00000 0.02500" size="0.005" rgba="1 0 0 1"/>
+                        </body>
+                    </body>
+                    <body name="robot2_guide2" pos="0 0 0">
+                        <geom name="robot2_guide2_geom" class="guide_geom"/>
+                    </body>
+                </body>
+                <body name="robot2_guide" pos="0 0 0">
+                    <geom name="robot2_guide_geom" class="guide_geom"/>
+                </body>
+            </body>
+        </body>
+                <!-- 로봇 3 -->
+        <body name="robot3" pos="0.5 -0.5 0" quat="0.3827 0 0 0.9239">
+            <body name="robot3_link1" pos="0 0 0">
+                <joint name="robot3_vertical_joint" class="vertical_joint" damping="100000"/>
+                <geom name="robot3_link1_geom" class="robot_geom"/>
+                <body name="robot3_link2" pos="0 0 0.4">
+                    <joint name="robot3_vertical_joint2" class="vertical_joint"/>
+                    <geom name="robot3_link2_geom" class="robot_geom"  />
+                    <body name="robot3_link3" pos="0 0 0.4">
+                        <joint name="robot3_vertical_joint3" class="vertical_joint"/>
+                        <geom name="robot3_link3_geom" class="robot_geom"/>
+                        <body name="robot3_end_effector" pos="0 0 0.4">
+                            <geom name="robot3_ee_geom" type="sphere" size="0.05" pos="0 0 0"/>
+                            <!--touch_sensor-->
+                            <!-- layer 1 -->
+                            <geom name="robot3_touch_geom_1" type="sphere" size="0.005" pos="0.000000 0.050000 0.000000" rgba="1 0 0 0.5"/>
+                            <site name="robot3_sensor_1" pos="0.000000 0.050000 0.000000" size="0.005" rgba="1 0 0 1"/>
+                            <!-- 레이어 2 -->
+                            <!-- 센서 2 -->
+                            <geom name="robot3_touch_geom_2" type="sphere" size="0.005" pos="0.02236 0.00000 0.04500" rgba="1 0 0 0.5"/>
+                            <site name="robot3_sensor_2" pos="0.02236 0.00000 0.04500" size="0.005" rgba="1 0 0 1"/>
+                            <!-- 센서 3 -->
+                            <geom name="robot3_touch_geom_3" type="sphere" size="0.005" pos="0.01118 0.01936 0.04500" rgba="1 0 0 0.5"/>
+                            <site name="robot3_sensor_3" pos="0.01118 0.01936 0.04500" size="0.005" rgba="1 0 0 1"/>
+                            <!-- 센서 4 -->
+                            <geom name="robot3_touch_geom_4" type="sphere" size="0.005" pos="-0.01118 0.01936 0.04500" rgba="1 0 0 0.5"/>
+                            <site name="robot3_sensor_4" pos="-0.01118 0.01936 0.04500" size="0.005" rgba="1 0 0 1"/>
+                            <!-- 센서 5 -->
+                            <geom name="robot3_touch_geom_5" type="sphere" size="0.005" pos="-0.02236 0.00000 0.04500" rgba="1 0 0 0.5"/>
+                            <site name="robot3_sensor_5" pos="-0.02236 0.00000 0.04500" size="0.005" rgba="1 0 0 1"/>
+                            <!-- 센서 6 -->
+                            <geom name="robot3_touch_geom_6" type="sphere" size="0.005" pos="-0.01118 -0.01936 0.04500" rgba="1 0 0 0.5"/>
+                            <site name="robot3_sensor_6" pos="-0.01118 -0.01936 0.04500" size="0.005" rgba="1 0 0 1"/>
+                            <!-- 센서 7 -->
+                            <geom name="robot3_touch_geom_7" type="sphere" size="0.005" pos="0.01118 -0.01936 0.04500" rgba="1 0 0 0.5"/>
+                            <site name="robot3_sensor_7" pos="0.01118 -0.01936 0.04500" size="0.005" rgba="1 0 0 1"/>
+
+                            <!-- 레이어 3 -->
+                            <!-- 센서 8 -->
+                            <geom name="robot3_touch_geom_8" type="sphere" size="0.005" pos="0.03000 0.00000 0.04000" rgba="1 0 0 0.5"/>
+                            <site name="robot3_sensor_8" pos="0.03000 0.00000 0.04000" size="0.005" rgba="1 0 0 1"/>
+                            <!-- 센서 9 -->
+                            <geom name="robot3_touch_geom_9" type="sphere" size="0.005" pos="0.02121 0.02121 0.04000" rgba="1 0 0 0.5"/>
+                            <site name="robot3_sensor_9" pos="0.02121 0.02121 0.04000" size="0.005" rgba="1 0 0 1"/>
+                            <!-- 센서 10 -->
+                            <geom name="robot3_touch_geom_10" type="sphere" size="0.005" pos="0.00000 0.03000 0.04000" rgba="1 0 0 0.5"/>
+                            <site name="robot3_sensor_10" pos="0.00000 0.03000 0.04000" size="0.005" rgba="1 0 0 1"/>
+                            <!-- 센서 11 -->
+                            <geom name="robot3_touch_geom_11" type="sphere" size="0.005" pos="-0.02121 0.02121 0.04000" rgba="1 0 0 0.5"/>
+                            <site name="robot3_sensor_11" pos="-0.02121 0.02121 0.04000" size="0.005" rgba="1 0 0 1"/>
+                            <!-- 센서 12 -->
+                            <geom name="robot3_touch_geom_12" type="sphere" size="0.005" pos="-0.03000 0.00000 0.04000" rgba="1 0 0 0.5"/>
+                            <site name="robot3_sensor_12" pos="-0.03000 0.00000 0.04000" size="0.005" rgba="1 0 0 1"/>
+                            <!-- 센서 13 -->
+                            <geom name="robot3_touch_geom_13" type="sphere" size="0.005" pos="-0.02121 -0.02121 0.04000" rgba="1 0 0 0.5"/>
+                            <site name="robot3_sensor_13" pos="-0.02121 -0.02121 0.04000" size="0.005" rgba="1 0 0 1"/>
+                            <!-- 센서 14 -->
+                            <geom name="robot3_touch_geom_14" type="sphere" size="0.005" pos="0.00000 -0.03000 0.04000" rgba="1 0 0 0.5"/>
+                            <site name="robot3_sensor_14" pos="0.00000 -0.03000 0.04000" size="0.005" rgba="1 0 0 1"/>
+                            <!-- 센서 15 -->
+                            <geom name="robot3_touch_geom_15" type="sphere" size="0.005" pos="0.02121 -0.02121 0.04000" rgba="1 0 0 0.5"/>
+                            <site name="robot3_sensor_15" pos="0.02121 -0.02121 0.04000" size="0.005" rgba="1 0 0 1"/>
+
+                            <!-- 레이어 4 -->
+                            <!-- 센서 16 -->
+                            <geom name="robot3_touch_geom_16" type="sphere" size="0.005" pos="0.03536 0.00000 0.03500" rgba="1 0 0 0.5"/>
+                            <site name="robot3_sensor_16" pos="0.03536 0.00000 0.03500" size="0.005" rgba="1 0 0 1"/>
+                            <!-- 센서 17 -->
+                            <geom name="robot3_touch_geom_17" type="sphere" size="0.005" pos="0.01092 0.03343 0.03500" rgba="1 0 0 0.5"/>
+                            <site name="robot3_sensor_17" pos="0.01092 0.03343 0.03500" size="0.005" rgba="1 0 0 1"/>
+                            <!-- 센서 18 -->
+                            <geom name="robot3_touch_geom_18" type="sphere" size="0.005" pos="-0.02863 0.02065 0.03500" rgba="1 0 0 0.5"/>
+                            <site name="robot3_sensor_18" pos="-0.02863 0.02065 0.03500" size="0.005" rgba="1 0 0 1"/>
+                            <!-- 센서 19 -->
+                            <geom name="robot3_touch_geom_19" type="sphere" size="0.005" pos="-0.02863 -0.02065 0.03500" rgba="1 0 0 0.5"/>
+                            <site name="robot3_sensor_19" pos="-0.02863 -0.02065 0.03500" size="0.005" rgba="1 0 0 1"/>
+                            <!-- 센서 20 -->
+                            <geom name="robot3_touch_geom_20" type="sphere" size="0.005" pos="0.01092 -0.03343 0.03500" rgba="1 0 0 0.5"/>
+                            <site name="robot3_sensor_20" pos="0.01092 -0.03343 0.03500" size="0.005" rgba="1 0 0 1"/>
+
+
+                            <!-- 레이어 5 -->
+                            <!-- 센서 21 -->
+                            <geom name="robot3_touch_geom_21" type="sphere" size="0.005" pos="0.04082 0.00000 0.03000" rgba="1 0 0 0.5"/>
+                            <site name="robot3_sensor_21" pos="0.04082 0.00000 0.03000" size="0.005" rgba="1 0 0 1"/>
+                            <!-- 센서 22 -->
+                            <geom name="robot3_touch_geom_22" type="sphere" size="0.005" pos="-0.02041 0.03534 0.03000" rgba="1 0 0 0.5"/>
+                            <site name="robot3_sensor_22" pos="-0.02041 0.03534 0.03000" size="0.005" rgba="1 0 0 1"/>
+                            <!-- 센서 23 -->
+                            <geom name="robot3_touch_geom_23" type="sphere" size="0.005" pos="-0.02041 -0.03534 0.03000" rgba="1 0 0 0.5"/>
+                            <site name="robot3_sensor_23" pos="-0.02041 -0.03534 0.03000" size="0.005" rgba="1 0 0 1"/>
+
+                            <!-- 레이어 6 -->
+                            <!-- 센서 24 -->
+                            <geom name="robot3_touch_geom_24" type="sphere" size="0.005" pos="0.04330 0.00000 0.02500" rgba="1 0 0 0.5"/>
+                            <site name="robot3_sensor_24" pos="0.04330 0.00000 0.02500" size="0.005" rgba="1 0 0 1"/>
+                            <!-- 센서 25 -->
+                            <geom name="robot3_touch_geom_25" type="sphere" size="0.005" pos="-0.04330 0.00000 0.02500" rgba="1 0 0 0.5"/>
+                            <site name="robot3_sensor_25" pos="-0.04330 0.00000 0.02500" size="0.005" rgba="1 0 0 1"/>
+
+                         </body>
+                    </body>
+                    <body name="robot3_guide2" pos="0 0 0">
+                        <geom name="robot3_guide2_geom" class="guide_geom"/>
+                        <geom name="touch_geom3" class="sensor_geom"/>
+
+                    </body>
+                </body>
+                <body name="robot3_guide" pos="0 0 0">
+                    <geom name="robot3_guide_geom" class="guide_geom"/>
+                </body>
+            </body>
+        </body>
+                <!-- 로봇 4 -->
+        <body name="robot4" pos="0.2 0.5 0" quat="0.9239 0 0 0.3827">
+            <body name="robot4_link1" pos="0 0 0">
+                <joint name="robot4_vertical_joint" class="vertical_joint" damping="100000"/>
+                <geom name="robot4_link1_geom" class="robot_geom"/>
+                <body name="robot4_link2" pos="0 0 0.4">
+                    <joint name="robot4_vertical_joint2" class="vertical_joint"/>
+                    <geom name="robot4_link2_geom" class="robot_geom" />z
+                    <body name="robot4_link3" pos="0 0 0.4">
+                        <joint name="robot4_vertical_joint3" class="vertical_joint"/>
+                        <geom name="robot4_link3_geom" class="robot_geom"/>
+                        <body name="robot4_end_effector" pos="0 0 0.4">
+                            <geom name="robot4_ee_geom" type="sphere" size="0.05" pos="0 0 0"/>
+<!--                            <site name="ee_touch_site4" type="sphere" pos="0 0 0" size="0.05" rgba="0 0 0 1"/>-->
+                            <!--touch_sensor-->
+                            <!-- layer 1 -->
+                            <geom name="robot4_touch_geom_1" type="sphere" size="0.005" pos="0.000000 0.050000 0.000000" rgba="1 0 0 0.5"/>
+                            <site name="robot4_sensor_1" pos="0.000000 0.050000 0.000000" size="0.005" rgba="1 0 0 1"/>
+                            <!-- 레이어 2 -->
+                            <!-- 센서 2 -->
+                            <geom name="robot4_touch_geom_2" type="sphere" size="0.005" pos="0.02236 0.00000 0.04500" rgba="1 0 0 0.5"/>
+                            <site name="robot4_sensor_2" pos="0.02236 0.00000 0.04500" size="0.005" rgba="1 0 0 1"/>
+                            <!-- 센서 3 -->
+                            <geom name="robot4_touch_geom_3" type="sphere" size="0.005" pos="0.01118 0.01936 0.04500" rgba="1 0 0 0.5"/>
+                            <site name="robot4_sensor_3" pos="0.01118 0.01936 0.04500" size="0.005" rgba="1 0 0 1"/>
+                            <!-- 센서 4 -->
+                            <geom name="robot4_touch_geom_4" type="sphere" size="0.005" pos="-0.01118 0.01936 0.04500" rgba="1 0 0 0.5"/>
+                            <site name="robot4_sensor_4" pos="-0.01118 0.01936 0.04500" size="0.005" rgba="1 0 0 1"/>
+                            <!-- 센서 5 -->
+                            <geom name="robot4_touch_geom_5" type="sphere" size="0.005" pos="-0.02236 0.00000 0.04500" rgba="1 0 0 0.5"/>
+                            <site name="robot4_sensor_5" pos="-0.02236 0.00000 0.04500" size="0.005" rgba="1 0 0 1"/>
+                            <!-- 센서 6 -->
+                            <geom name="robot4_touch_geom_6" type="sphere" size="0.005" pos="-0.01118 -0.01936 0.04500" rgba="1 0 0 0.5"/>
+                            <site name="robot4_sensor_6" pos="-0.01118 -0.01936 0.04500" size="0.005" rgba="1 0 0 1"/>
+                            <!-- 센서 7 -->
+                            <geom name="robot4_touch_geom_7" type="sphere" size="0.005" pos="0.01118 -0.01936 0.04500" rgba="1 0 0 0.5"/>
+                            <site name="robot4_sensor_7" pos="0.01118 -0.01936 0.04500" size="0.005" rgba="1 0 0 1"/>
+
+                            <!-- 레이어 3 -->
+                            <!-- 센서 8 -->
+                            <geom name="robot4_touch_geom_8" type="sphere" size="0.005" pos="0.03000 0.00000 0.04000" rgba="1 0 0 0.5"/>
+                            <site name="robot4_sensor_8" pos="0.03000 0.00000 0.04000" size="0.005" rgba="1 0 0 1"/>
+                            <!-- 센서 9 -->
+                            <geom name="robot4_touch_geom_9" type="sphere" size="0.005" pos="0.02121 0.02121 0.04000" rgba="1 0 0 0.5"/>
+                            <site name="robot4_sensor_9" pos="0.02121 0.02121 0.04000" size="0.005" rgba="1 0 0 1"/>
+                            <!-- 센서 10 -->
+                            <geom name="robot4_touch_geom_10" type="sphere" size="0.005" pos="0.00000 0.03000 0.04000" rgba="1 0 0 0.5"/>
+                            <site name="robot4_sensor_10" pos="0.00000 0.03000 0.04000" size="0.005" rgba="1 0 0 1"/>
+                            <!-- 센서 11 -->
+                            <geom name="robot4_touch_geom_11" type="sphere" size="0.005" pos="-0.02121 0.02121 0.04000" rgba="1 0 0 0.5"/>
+                            <site name="robot4_sensor_11" pos="-0.02121 0.02121 0.04000" size="0.005" rgba="1 0 0 1"/>
+                            <!-- 센서 12 -->
+                            <geom name="robot4_touch_geom_12" type="sphere" size="0.005" pos="-0.03000 0.00000 0.04000" rgba="1 0 0 0.5"/>
+                            <site name="robot4_sensor_12" pos="-0.03000 0.00000 0.04000" size="0.005" rgba="1 0 0 1"/>
+                            <!-- 센서 13 -->
+                            <geom name="robot4_touch_geom_13" type="sphere" size="0.005" pos="-0.02121 -0.02121 0.04000" rgba="1 0 0 0.5"/>
+                            <site name="robot4_sensor_13" pos="-0.02121 -0.02121 0.04000" size="0.005" rgba="1 0 0 1"/>
+                            <!-- 센서 14 -->
+                            <geom name="robot4_touch_geom_14" type="sphere" size="0.005" pos="0.00000 -0.03000 0.04000" rgba="1 0 0 0.5"/>
+                            <site name="robot4_sensor_14" pos="0.00000 -0.03000 0.04000" size="0.005" rgba="1 0 0 1"/>
+                            <!-- 센서 15 -->
+                            <geom name="robot4_touch_geom_15" type="sphere" size="0.005" pos="0.02121 -0.02121 0.04000" rgba="1 0 0 0.5"/>
+                            <site name="robot4_sensor_15" pos="0.02121 -0.02121 0.04000" size="0.005" rgba="1 0 0 1"/>
+
+                            <!-- 레이어 4 -->
+                            <!-- 센서 16 -->
+                            <geom name="robot4_touch_geom_16" type="sphere" size="0.005" pos="0.03536 0.00000 0.03500" rgba="1 0 0 0.5"/>
+                            <site name="robot4_sensor_16" pos="0.03536 0.00000 0.03500" size="0.005" rgba="1 0 0 1"/>
+                            <!-- 센서 17 -->
+                            <geom name="robot4_touch_geom_17" type="sphere" size="0.005" pos="0.01092 0.03343 0.03500" rgba="1 0 0 0.5"/>
+                            <site name="robot4_sensor_17" pos="0.01092 0.03343 0.03500" size="0.005" rgba="1 0 0 1"/>
+                            <!-- 센서 18 -->
+                            <geom name="robot4_touch_geom_18" type="sphere" size="0.005" pos="-0.02863 0.02065 0.03500" rgba="1 0 0 0.5"/>
+                            <site name="robot4_sensor_18" pos="-0.02863 0.02065 0.03500" size="0.005" rgba="1 0 0 1"/>
+                            <!-- 센서 19 -->
+                            <geom name="robot4_touch_geom_19" type="sphere" size="0.005" pos="-0.02863 -0.02065 0.03500" rgba="1 0 0 0.5"/>
+                            <site name="robot4_sensor_19" pos="-0.02863 -0.02065 0.03500" size="0.005" rgba="1 0 0 1"/>
+                            <!-- 센서 20 -->
+                            <geom name="robot4_touch_geom_20" type="sphere" size="0.005" pos="0.01092 -0.03343 0.03500" rgba="1 0 0 0.5"/>
+                            <site name="robot4_sensor_20" pos="0.01092 -0.03343 0.03500" size="0.005" rgba="1 0 0 1"/>
+
+
+                            <!-- 레이어 5 -->
+                            <!-- 센서 21 -->
+                            <geom name="robot4_touch_geom_21" type="sphere" size="0.005" pos="0.04082 0.00000 0.03000" rgba="1 0 0 0.5"/>
+                            <site name="robot4_sensor_21" pos="0.04082 0.00000 0.03000" size="0.005" rgba="1 0 0 1"/>
+                            <!-- 센서 22 -->
+                            <geom name="robot4_touch_geom_22" type="sphere" size="0.005" pos="-0.02041 0.03534 0.03000" rgba="1 0 0 0.5"/>
+                            <site name="robot4_sensor_22" pos="-0.02041 0.03534 0.03000" size="0.005" rgba="1 0 0 1"/>
+                            <!-- 센서 23 -->
+                            <geom name="robot4_touch_geom_23" type="sphere" size="0.005" pos="-0.02041 -0.03534 0.03000" rgba="1 0 0 0.5"/>
+                            <site name="robot4_sensor_23" pos="-0.02041 -0.03534 0.03000" size="0.005" rgba="1 0 0 1"/>
+
+                            <!-- 레이어 6 -->
+                            <!-- 센서 24 -->
+                            <geom name="robot4_touch_geom_24" type="sphere" size="0.005" pos="0.04330 0.00000 0.02500" rgba="1 0 0 0.5"/>
+                            <site name="robot4_sensor_24" pos="0.04330 0.00000 0.02500" size="0.005" rgba="1 0 0 1"/>
+                            <!-- 센서 25 -->
+                            <geom name="robot4_touch_geom_25" type="sphere" size="0.005" pos="-0.04330 0.00000 0.02500" rgba="1 0 0 0.5"/>
+                            <site name="robot4_sensor_25" pos="-0.04330 0.00000 0.02500" size="0.005" rgba="1 0 0 1"/>
+
+                        </body>
+                    </body>
+                    <body name="robot4_guide2" pos="0 0 0">
+                        <geom name="robot4_guide2_geom" class="guide_geom"/>
+                    </body>
+                </body>
+                <body name="robot4_guide" pos="0 0 0">
+                    <geom name="robot4_guide_geom" class="guide_geom"/>
+                </body>
+            </body>
+        </body>
+    </worldbody>
+
+    <actuator>
+        <!-- 로봇 1 액추에이터 -->
+        <position joint="robot1_vertical_joint" name="1_actuator_joint" kp="2000" />
+        <position joint="robot1_vertical_joint2" name="1_actuator_joint2" kp="10000"/>
+        <position joint="robot1_vertical_joint3" name="1_actuator_joint3" kp="10000"/>
+         <!-- 로봇 2 액추에이터 -->
+        <position joint="robot2_vertical_joint" name="2_actuator_joint" kp="2000"/>
+        <position joint="robot2_vertical_joint2" name="2_actuator_joint2" kp="10000"/>
+        <position joint="robot2_vertical_joint3" name="2_actuator_joint3" kp="10000"/>
+         <!-- 로봇 2 액추에이터 -->
+        <position joint="robot3_vertical_joint" name="3_actuator_joint" kp="2000"/>
+        <position joint="robot3_vertical_joint2" name="3_actuator_joint2" kp="10000"/>
+        <position joint="robot3_vertical_joint3" name="3_actuator_joint3" kp="10000"/>
+         <!-- 로봇 2 액추에이터 -->
+        <position joint="robot4_vertical_joint" name="4_actuator_joint" kp="2000"/>
+        <position joint="robot4_vertical_joint2" name="4_actuator_joint2" kp="10000"/>
+        <position joint="robot4_vertical_joint3" name="4_actuator_joint3" kp="10000"/>
+
+    </actuator>
+
+    <sensor>
+        <!-- Robot1 터치 센서 -->
+        <touch name="robot1_sensor1" site="robot1_sensor_1"/>
+        <touch name="robot1_sensor2" site="robot1_sensor_2"/>
+        <touch name="robot1_sensor3" site="robot1_sensor_3"/>
+        <touch name="robot1_sensor4" site="robot1_sensor_4"/>
+        <touch name="robot1_sensor5" site="robot1_sensor_5"/>
+        <touch name="robot1_sensor6" site="robot1_sensor_6"/>
+        <touch name="robot1_sensor7" site="robot1_sensor_7"/>
+        <touch name="robot1_sensor8" site="robot1_sensor_8"/>
+        <touch name="robot1_sensor9" site="robot1_sensor_9"/>
+        <touch name="robot1_sensor10" site="robot1_sensor_10"/>
+        <touch name="robot1_sensor11" site="robot1_sensor_11"/>
+        <touch name="robot1_sensor12" site="robot1_sensor_12"/>
+        <touch name="robot1_sensor13" site="robot1_sensor_13"/>
+        <touch name="robot1_sensor14" site="robot1_sensor_14"/>
+        <touch name="robot1_sensor15" site="robot1_sensor_15"/>
+        <touch name="robot1_sensor16" site="robot1_sensor_16"/>
+        <touch name="robot1_sensor17" site="robot1_sensor_17"/>
+        <touch name="robot1_sensor18" site="robot1_sensor_18"/>
+        <touch name="robot1_sensor19" site="robot1_sensor_19"/>
+        <touch name="robot1_sensor20" site="robot1_sensor_20"/>
+        <touch name="robot1_sensor21" site="robot1_sensor_21"/>
+        <touch name="robot1_sensor22" site="robot1_sensor_22"/>
+        <touch name="robot1_sensor23" site="robot1_sensor_23"/>
+        <touch name="robot1_sensor24" site="robot1_sensor_24"/>
+        <touch name="robot1_sensor25" site="robot1_sensor_25"/>
+
+
+        <!-- Robot2 터치 센서 -->
+        <touch name="robot2_sensor1" site="robot2_sensor_1"/>
+        <touch name="robot2_sensor2" site="robot2_sensor_2"/>
+        <touch name="robot2_sensor3" site="robot2_sensor_3"/>
+        <touch name="robot2_sensor4" site="robot2_sensor_4"/>
+        <touch name="robot2_sensor5" site="robot2_sensor_5"/>
+        <touch name="robot2_sensor6" site="robot2_sensor_6"/>
+        <touch name="robot2_sensor7" site="robot2_sensor_7"/>
+        <touch name="robot2_sensor8" site="robot2_sensor_8"/>
+        <touch name="robot2_sensor9" site="robot2_sensor_9"/>
+        <touch name="robot2_sensor10" site="robot2_sensor_10"/>
+        <touch name="robot2_sensor11" site="robot2_sensor_11"/>
+        <touch name="robot2_sensor12" site="robot2_sensor_12"/>
+        <touch name="robot2_sensor13" site="robot2_sensor_13"/>
+        <touch name="robot2_sensor14" site="robot2_sensor_14"/>
+        <touch name="robot2_sensor15" site="robot2_sensor_15"/>
+        <touch name="robot2_sensor16" site="robot2_sensor_16"/>
+        <touch name="robot2_sensor17" site="robot2_sensor_17"/>
+        <touch name="robot2_sensor18" site="robot2_sensor_18"/>
+        <touch name="robot2_sensor19" site="robot2_sensor_19"/>
+        <touch name="robot2_sensor20" site="robot2_sensor_20"/>
+        <touch name="robot2_sensor21" site="robot2_sensor_21"/>
+        <touch name="robot2_sensor22" site="robot2_sensor_22"/>
+        <touch name="robot2_sensor23" site="robot2_sensor_23"/>
+        <touch name="robot2_sensor24" site="robot2_sensor_24"/>
+        <touch name="robot2_sensor25" site="robot2_sensor_25"/>
+        
+        <!-- Robot3 터치 센서 -->
+        <touch name="robot3_sensor1" site="robot3_sensor_1"/>
+        <touch name="robot3_sensor2" site="robot3_sensor_2"/>
+        <touch name="robot3_sensor3" site="robot3_sensor_3"/>
+        <touch name="robot3_sensor4" site="robot3_sensor_4"/>
+        <touch name="robot3_sensor5" site="robot3_sensor_5"/>
+        <touch name="robot3_sensor6" site="robot3_sensor_6"/>
+        <touch name="robot3_sensor7" site="robot3_sensor_7"/>
+        <touch name="robot3_sensor8" site="robot3_sensor_8"/>
+        <touch name="robot3_sensor9" site="robot3_sensor_9"/>
+        <touch name="robot3_sensor10" site="robot3_sensor_10"/>
+        <touch name="robot3_sensor11" site="robot3_sensor_11"/>
+        <touch name="robot3_sensor12" site="robot3_sensor_12"/>
+        <touch name="robot3_sensor13" site="robot3_sensor_13"/>
+        <touch name="robot3_sensor14" site="robot3_sensor_14"/>
+        <touch name="robot3_sensor15" site="robot3_sensor_15"/>
+        <touch name="robot3_sensor16" site="robot3_sensor_16"/>
+        <touch name="robot3_sensor17" site="robot3_sensor_17"/>
+        <touch name="robot3_sensor18" site="robot3_sensor_18"/>
+        <touch name="robot3_sensor19" site="robot3_sensor_19"/>
+        <touch name="robot3_sensor20" site="robot3_sensor_20"/>
+        <touch name="robot3_sensor21" site="robot3_sensor_21"/>
+        <touch name="robot3_sensor22" site="robot3_sensor_22"/>
+        <touch name="robot3_sensor23" site="robot3_sensor_23"/>
+        <touch name="robot3_sensor24" site="robot3_sensor_24"/>
+        <touch name="robot3_sensor25" site="robot3_sensor_25"/>
+        
+        <!-- Robot4 터치 센서 -->
+        <touch name="robot4_sensor1" site="robot4_sensor_1"/>
+        <touch name="robot4_sensor2" site="robot4_sensor_2"/>
+        <touch name="robot4_sensor3" site="robot4_sensor_3"/>
+        <touch name="robot4_sensor4" site="robot4_sensor_4"/>
+        <touch name="robot4_sensor5" site="robot4_sensor_5"/>
+        <touch name="robot4_sensor6" site="robot4_sensor_6"/>
+        <touch name="robot4_sensor7" site="robot4_sensor_7"/>
+        <touch name="robot4_sensor8" site="robot4_sensor_8"/>
+        <touch name="robot4_sensor9" site="robot4_sensor_9"/>
+        <touch name="robot4_sensor10" site="robot4_sensor_10"/>
+        <touch name="robot4_sensor11" site="robot4_sensor_11"/>
+        <touch name="robot4_sensor12" site="robot4_sensor_12"/>
+        <touch name="robot4_sensor13" site="robot4_sensor_13"/>
+        <touch name="robot4_sensor14" site="robot4_sensor_14"/>
+        <touch name="robot4_sensor15" site="robot4_sensor_15"/>
+        <touch name="robot4_sensor16" site="robot4_sensor_16"/>
+        <touch name="robot4_sensor17" site="robot4_sensor_17"/>
+        <touch name="robot4_sensor18" site="robot4_sensor_18"/>
+        <touch name="robot4_sensor19" site="robot4_sensor_19"/>
+        <touch name="robot4_sensor20" site="robot4_sensor_20"/>
+        <touch name="robot4_sensor21" site="robot4_sensor_21"/>
+        <touch name="robot4_sensor22" site="robot4_sensor_22"/>
+        <touch name="robot4_sensor23" site="robot4_sensor_23"/>
+        <touch name="robot4_sensor24" site="robot4_sensor_24"/>
+        <touch name="robot4_sensor25" site="robot4_sensor_25"/>
+
+    </sensor>
+
+    <contact>
+        <!-- 로봇 1 충돌 쌍 -->
+        <pair geom1="robot1_link1_geom" geom2="robot1_link2_geom"/>
+        <pair geom1="robot1_link2_geom" geom2="robot1_link3_geom"/>
+        <!-- 로봇 2 충돌 쌍 -->
+        <pair geom1="robot2_link1_geom" geom2="robot2_link2_geom"/>
+        <pair geom1="robot2_link2_geom" geom2="robot2_link3_geom"/>
+        <!-- 로봇 3 충돌 쌍 -->
+        <pair geom1="robot3_link1_geom" geom2="robot3_link2_geom"/>
+        <pair geom1="robot3_link2_geom" geom2="robot3_link3_geom"/>
+        <!-- 로봇 4 충돌 쌍 -->
+        <pair geom1="robot4_link1_geom" geom2="robot4_link2_geom"/>
+        <pair geom1="robot4_link2_geom" geom2="robot4_link3_geom"/>
+
+    </contact>
+
+</mujoco>
